@@ -8,7 +8,7 @@ const RootLayout = () => {
     <header>
      <Navbar />
      </header>
-    <main className='sm:min-h-[40vh] min-h-[50vh]'>
+    <main className='sm:min-h-[40vh] min-h-[55vh]'>
       <Outlet />
       </main>
       <footer>
