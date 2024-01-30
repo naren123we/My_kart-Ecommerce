@@ -1,8 +1,5 @@
 
-import { createContext, useReducer ,useEffect, useState} from "react";
-import { auth } from "../Firebase";
-import {onAuthStateChanged } from "firebase/auth";
-
+import { createContext, useReducer ,useEffect} from "react";
 import cartReducer from "../reducers/cartReducer";
 
 
@@ -35,8 +32,7 @@ const initialState = {
 
 const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
-  const [user,setuser]=useState({})
-  const [toggle,settoggle]=useState(false)
+
   
  
   useEffect(()=>{
@@ -46,21 +42,7 @@ const CartProvider = ({ children }) => {
 
 },[state.cart,state.total_item,state.total_amount])
 
-  function Tog(){
-    settoggle(!toggle)
-  }
 
-
- useEffect(()=>{
-    onAuthStateChanged(auth, (currentuser) => {
-      try{
-    
-      setuser(currentuser);
-      }catch(err){
-        console.log(err.message)
-      }
-    });
-  },[toggle])
 
   const addToCart =async (id, color, amount, product) => {
    dispatch({ type: "ADD_TO_CART", payload: { id, color, amount, product } });
@@ -80,7 +62,7 @@ const CartProvider = ({ children }) => {
  
 
   return (
-    <CartContext.Provider value={{ ...state, addToCart, removeItem,user,Tog,cartReset }}>
+    <CartContext.Provider value={{ ...state, addToCart, removeItem,cartReset }}>
       {children}
     </CartContext.Provider>
   );
