@@ -24,7 +24,7 @@ const name=e.target.name;
 const set=async(e)=>{
   e.preventDefault()
 const {name,email,message}=formData;
-  const res=await fetch('http://localhost:4000/api/v1/contactus',
+  const res=await fetch('https://my-kart-server.vercel.app/api/v1/contactus',
   { method:'POST',
   headers:{
     'Content-Type':"application/json",
