@@ -34,7 +34,7 @@ body:JSON.stringify({
  name,
  email,
  message,
-
+token,
 })
 })
 const data=await res.json();
